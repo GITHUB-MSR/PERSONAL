@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customizable Taskbar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        .taskbar {
+            position: fixed;
+            width: 200px; /* Adjust width as needed */
+            height: 100%; /* Make taskbar full height */
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0.06);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(1.2px);
+-webkit-backdrop-filter: blur(1.2px);
+border: 1px solid rgba(255, 255, 255, 1);
+            z-index: 999;
+            top: 0;
+            left: 0;
+            overflow-y: auto; /* Enable vertical scrolling */
+            scrollbar-width: thin; /* Adjust scrollbar width */
+        }
+
+        .icons {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px; /* Adjust spacing as needed */
+        }
+
+        .icon {
+            width: 30px; /* Adjust size as needed */
+            height: 30px; /* Adjust size as needed */
+            margin-bottom: 10px; /* Adjust spacing between icons */
+            background-color: rgba(255, 255, 255, 0.7); /* Adjust transparency */
+            backdrop-filter: blur(10px); /* Add blur effect */
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="taskbar">
+        <div class="icons">
+            <a href="#url1" class="icon"></a>
+            <a href="#url2" class="icon"></a>
+            <a href="#url3" class="icon"></a>
+            <a href="#url4" class="icon"></a>
+            <a href="#url5" class="icon"></a>
+            <a href="#url6" class="icon"></a>
+            <a href="#url7" class="icon"></a>
+            <a href="#url8" class="icon"></a>
+            <a href="#url9" class="icon"></a>
+            <a href="#url10" class="icon"></a>
+            <a href="#url11" class="icon"></a>
+            <a href="#url12" class="icon"></a>
+            <a href="#url13" class="icon"></a>
+            <a href="#url14" class="icon"></a>
+            <a href="#url15" class="icon"></a>
+        </div>
+    </div>
+</body>
+</html>
+   <style> 
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://w.wallhaven.cc/full/5g/wallhaven-5gp227.png');
+}
+
+</Style>

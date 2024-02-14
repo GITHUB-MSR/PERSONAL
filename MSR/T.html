@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customizable Taskbar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            font-family: Arial, sans-serif; /* Change font family as needed */
+        }
+
+        .taskbar {
+            position: fixed;
+            width: 200px; /* Adjust width as needed */
+            height: 100%; /* Make taskbar full height */
+            background-color: rgba(255, 255, 255, 0.7); /* Adjust transparency */
+            backdrop-filter: blur(10px); /* Add blur effect */
+            z-index: 999;
+            top: 0;
+            left: 0;
+            overflow-y: auto; /* Enable vertical scrolling */
+            scrollbar-width: thin; /* Adjust scrollbar width */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .datetime {
+            text-align: center;
+            font-size: 14px; /* Adjust font size as needed */
+        }
+
+        .weather {
+            text-align: center;
+            font-size: 14px; /* Adjust font size as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="taskbar">
+        <div>
+            <div class="datetime" id="datetime"></div>
+            <div class="weather" id="weather"></div>
+        </div>
+        <div class="icons">
+            <!-- Icons here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to update date and time
+            function updateDateTime() {
+                const now = new Date();
+                const options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                const dateTimeString = now.toLocaleDateString('en-US', options).replace(/,/g, ''); // Remove commas
+                document.getElementById('datetime').textContent = dateTimeString;
+            }
+
+            // Function to fetch weather information
+            function getWeather() {
+                // Replace 'YOUR_API_KEY' with your actual OpenWeatherMap API key
+                const apiKey = 'YOUR_API_KEY';
+                // Replace 'YOUR_CITY' with your actual city
+                const city = 'YOUR_CITY';
+                const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const weatherDescription = data.weather[0].description;
+                        const temperature = data.main.temp;
+                        const weatherString = `Weather: ${weatherDescription}, Temperature: ${temperature} °C`;
+                        document.getElementById('weather').textContent = weatherString;
+                    })
+                    .catch(error => {
+                        console.log('Error fetching weather data:', error);
+                    });
+            }
+
+            // Update date and time every second
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+
+            // Get weather information when the page loads
+            getWeather();
+        });
+    </script>
+</body>
+</html>
